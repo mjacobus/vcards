@@ -24,6 +24,8 @@ class Template
     parts.push("NOTE:#{@vcard.note}")
     parts.push("REV:#{@vcard.revision}")
 
+    parts.push("EMAIL:#{@vcard.email}")
+
     if @vcard.uid
       parts.push("UID:#{@vcard.uid}")
     end

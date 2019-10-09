@@ -53,8 +53,6 @@ class VCard
       return
     end
 
-    parts = phone.to_s.split('-')
-
-    "+#{parts[0]} #{parts[1]}"
+    phone.gsub(/[^0-9\(\)\+]/, '')
   end
 end

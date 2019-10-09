@@ -1,9 +1,19 @@
 # Vcards
 
-Criação de VCards a partir de CSVs.
+VCard creation from CSV
 
+## Requirements
 
-Exemplo:
+The following fields are supported:
+
+- name
+- first_name
+- last_name
+- email
+- phone
+- note
+
+## Usage:
 
 ```bash
 ./exe/convert --column-separator="," \

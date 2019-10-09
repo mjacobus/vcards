@@ -16,7 +16,8 @@ RSpec.describe Template do
       note: 'some note',
       revision: 'the-revision',
       formatted_phone: 'the-phone',
-      uid: 'the-uid'
+      uid: 'the-uid',
+      email: 'the-email'
     }
   end
 
@@ -30,6 +31,10 @@ RSpec.describe Template do
     it 'renders name' do
       expect(content).to include('N:first name;last name;;;')
       expect(content).to include('FN:full-name')
+    end
+
+    it 'renders email' do
+      expect(content).to include('EMAIL:the-email')
     end
 
     it 'renders note' do

@@ -1,6 +1,2 @@
-require "vcards/version"
-
-module Vcards
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require "v_card"
+require "template"

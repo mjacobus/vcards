@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+lib = File.expand_path('lib', __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'bundler/setup'
+require 'vcards'
+require 'koine/csv'
+
+options = {}
+
+ARGV.select { |v| v.start_with?('--') }.each do |value|
+  parts = value.split('--').last.split('=')
+  options[parts[0]] = parts[1]
+end
+
+file = options.fetch('file')
+separator = options.fetch('column-separator')
+note = options['note']
+limit = options['limit'].to_i
+fields = options['fields']
+
+parser = Koine::Csv::NamedColumnsParser.new({
+  col_sep: separator
+})
+records = parser.parse(File.read(file))
+
+unless limit.zero?
+  records = records.first(limit)
+end
+
+if fields
+  records = records.map do |record|
+    record.slice(*fields.split(','))
+  end
+end
+
+templates = records.map do |record|
+  vcard = VCard.new(record.merge('note' => note))
+  Template.new(vcard)
+end
+
+templates.each do |template|
+  puts template
+end

@@ -1,10 +1,10 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "vcards/version"
+require "vcards"
 
 Gem::Specification.new do |spec|
   spec.name          = "vcards"
-  spec.version       = Vcards::VERSION
+  spec.version       = "0.0.1"
   spec.authors       = ["Marcelo Jacobus"]
   spec.email         = ["marcelo.jacobus@gmail.com"]
 
@@ -29,4 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rubocop"
+  spec.add_development_dependency "rubocop-rspec"
+  spec.add_dependency "koine-csv"
 end

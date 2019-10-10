@@ -4,6 +4,20 @@ VCard creation from CSV
 
 ## Requirements
 
+- Ruby
+
+## Installation
+
+
+```
+gem install bundler                          # if not installed yet
+git clone https://github.com/mjacobus/vcards # Download the project
+cd vcards                                    # enter the project's folder
+bundle install                               # install dependencies
+```
+
+## CSV Requirements
+
 The following fields are supported:
 
 - name
